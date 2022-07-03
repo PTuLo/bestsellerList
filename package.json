@@ -5,9 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "npm run sam-build && npm run package && npm run deploy:packaged",
+    "package": "sam package --s3-bucket bestseller-list-deployments --s3-prefix bestseller-list --output-template-file packaged.yaml",
+    "sam-build": "sam build -t CloudFormation.yaml",
+    "deploy:packaged": "sam deploy --template-file packaged.yaml --region us-east-1 --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM --s3-bucket bestseller-list-deployments --s3-prefix bestseller-list --stack-name bestseller-list"
   },
   "dependencies": {
+    "aws-sdk": "^2.1167.0",
     "core-js": "^3.8.3",
     "vue": "^3.2.13"
   },
