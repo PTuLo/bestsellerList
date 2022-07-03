@@ -14,25 +14,8 @@ AWS.config.update({
 async function start(event) {
   try {
     //get nyt bestseller books api key/secret
-    let ssm = new AWS.SSM();
-    let key = await ssm.getParameter("nyt-bestseller-key");
-    console.info(key);
     //call axios
-    let options = {
-      method: "GET",
-      url: urlPath,
-      params: {
-        date: event.pathParameters.date,
-        name: event.pathParameters.listName,
-      },
-      headers: {
-        key: key,
-      },
-    };
-    let bestSellerData = await axios(options);
-    //look through it with consoles maybe
-    console.info(bestSellerData);
-    //put data in bucket
+    //look through the names of the lists
   } catch (err) {
     console.info(err);
     throw err;

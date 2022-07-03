@@ -1,0 +1,11 @@
+{
+  "name": "get-bestseller-list",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gets best seller list from nyt",
+  "author": "Pablo TL",
+  "main": "app.js",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
